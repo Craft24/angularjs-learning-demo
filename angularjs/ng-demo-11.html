@@ -1,0 +1,29 @@
+<!DOCTYPE>
+<html>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+<head>
+    <title>angular service location and http</title>
+</head>
+
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <p>LocationService:
+            <span ng-bind="myUrl"></span>
+        </p>
+        <p><span ng-bind="welcome"></span></p>
+    </div>
+
+    <script src="js/angular.min.js"></script>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myCtrl", function($scope, $location, $http) {
+            $scope.myUrl = $location.absUrl();
+            $http.get("welcome.html").then(function(response) {
+                $scope.welcome = response.data;
+            });
+        });
+    </script>
+</body>
+
+</html>

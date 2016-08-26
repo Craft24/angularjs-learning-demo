@@ -1,0 +1,37 @@
+<!DOCTYPE>
+<html>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+<head>
+    <title>create custom command</title>
+</head>
+
+<body>
+    <div ng-app="myapp">
+        元素调用：
+        <myfirst-directive></myfirst-directive>
+        <br>属性调用：
+        <span myfirst-directive></span>
+        <br>类名调用：
+        <span class="myfirst-directive"></span>
+        <br>注释调用：
+        <!-- directive:myfirst-directive -->
+    </div>
+
+    <script src="js/angular.min.js"></script>
+    <script>
+        var app = angular.module("myapp", []);
+        app.directive("myfirstDirective", function() {
+            return {
+                //restrict : "C",//采用类名调用时开启
+                /*restrict: "M",
+                replace: true,*/ //采用注释模式调用自定义指令，注意在注释前面加上"directive:"
+                /*restrict: "EACM",
+                replace: true,*/ //四个模式全部开启
+                template: "<h1>自定义指令</h1>"
+            }
+        });
+    </script>
+</body>
+
+</html>

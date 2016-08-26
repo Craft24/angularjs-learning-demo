@@ -1,0 +1,33 @@
+<!DOCTYPE>
+<html>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+<head>
+    <title>angular service timeout and http</title>
+</head>
+
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <p>TimeoutDemo:
+            <span ng-bind="olderStr"></span>
+        </p>
+        <p>IntervalDemo:<span ng-bind="theTime"></span></p>
+    </div>
+
+    <script src="js/angular.min.js"></script>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myCtrl", function($scope, $timeout, $interval) {
+            $scope.olderStr = "Older String";
+            $scope.theTime = new Date().toLocaleTimeString();
+            $timeout(function() {
+                $scope.olderStr = "The new string!"
+            }, 3000);
+            $interval(function() {
+                $scope.theTime = new Date().toLocaleTimeString();
+            }, 3000);
+        });
+    </script>
+</body>
+
+</html>

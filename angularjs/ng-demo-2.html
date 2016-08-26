@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html>
+<meta name="" http-equiv="ContentType" content="text/html;chartset=utf-8">
+
+<head>
+    <title>expression</title>
+</head>
+
+<body>
+    <div id="div1" ng-controller="myCtrl1">
+        {{count}}x{{price}}={{count*price}}
+    </div>
+
+    <div id="div2" ng-controller="myCtrl2">
+        My favorate city is {{city}}.
+    </div>
+
+    <script src="js/angular.min.js"></script>
+    <script>
+        var app1 = angular.module("myApp1", []);
+        app1.controller("myCtrl1", function($scope) {
+            $scope.count = "5";
+            $scope.price = "5.4";
+        });
+        var app2 = angular.module("myApp2", []);
+        app2.controller("myCtrl2", function($scope) {
+            $scope.city = "Zhengzhou";
+        })
+        angular.element(document).ready(function() {
+            angular.bootstrap(document.getElementById("div1"), ["myApp1"]);
+            angular.bootstrap(document.getElementById("div2"), ["myApp2"]);
+        });
+    </script>
+</body>
+
+</html>

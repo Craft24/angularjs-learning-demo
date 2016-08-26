@@ -1,0 +1,28 @@
+<!DOCTYPE>
+<html>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+<head>
+    <title>angular table</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+</head>
+
+<body>
+    <div ng-app="personApp" ng-controller="personCtrl">
+        <p>表格显示如下:
+            <table>
+                <tr ng-repeat="x in persons | orderBy:'city'">
+                    <td>{{$index+1}}</td>
+                    <td>{{x.name|uppercase}}</td>
+                    <td>{{x.city|uppercase}}</td>
+                    <td>{{x.born}}</td>
+                </tr>
+            </table>
+        </p>
+    </div>
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/person.js"></script>
+</body>
+
+</html>

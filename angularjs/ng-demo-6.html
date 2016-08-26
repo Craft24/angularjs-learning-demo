@@ -1,0 +1,29 @@
+<!DOCTYPE>
+<html>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+<head>
+    <title>repeat html</title>
+</head>
+
+<body>
+    <div id="myapp" ng-controller="myCtrl">
+        <br>数组元素： <input type="text" value="{{points[0]}}{{points[1]}}{{points[2]}}{{points[3]}}">
+        <p ng-repeat="x in points">{{x}}</p>
+
+    </div>
+
+    <script src="js/angular.min.js"></script>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myCtrl", function($scope) {
+            $scope.points = ['1', '2', '3', '4'];
+            $scope.name = "xinqin.sun";
+        });
+        angular.element(document).ready(function() {
+            angular.bootstrap(document.getElementById("myapp"), ["myApp"]);
+        });
+    </script>
+</body>
+
+</html>

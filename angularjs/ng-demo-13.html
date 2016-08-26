@@ -1,0 +1,54 @@
+<!DOCTYPE>
+<html>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+<head>
+    <title>angular ng-options</title>
+</head>
+
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <p>选项一:
+            <select ng-model="selectname1" ng-options="x for x in selects">
+            </select>
+        </p>
+        <p>{{selectname1}}</p>
+        <p>选项二:
+            <select ng-model="selectname2">
+                <option ng-repeat="a in selects" value="{{a}}">{{a}}</option>
+            </select>
+        </p>
+        <p>{{selectname2}}</p>
+        <p>选项三:
+            <select ng-model="selectname3" ng-options="b.value for b in persons">
+            </select>
+        </p>
+        <p>{{selectname3}}</p>
+        <p>选项三:
+            <select ng-model="selectname4">
+                <option ng-repeat="c in persons" value="{{c.sex}}">{{c.value}}</option>
+            </select>
+        </p>
+        <p>{{selectname4}}</p>
+    </div>
+
+    <script src="js/angular.min.js"></script>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myCtrl", function($scope) {
+            $scope.selects = ['A:优秀', 'B:良好', 'C:中等', 'D:一般'];
+            $scope.persons = [{
+                sex: 0,
+                value: '男'
+            }, {
+                sex: 1,
+                value: '女'
+            }, {
+                sex: 2,
+                value: '其它'
+            }];
+        });
+    </script>
+</body>
+
+</html>

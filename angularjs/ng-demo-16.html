@@ -1,0 +1,35 @@
+<!DOCTYPE>
+<html>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+<head>
+    <title>Cart</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+</head>
+
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        
+        <div ng-repeat="item in items">
+            <span>{{$index}}</span>
+            <span>{{item.title}}</span>
+            <input type="text" ng-model="item.quantity">
+            <span>{{item.price|currency}}</span>
+            <span>{{item.quantity*item.price|currency}}</span>            
+            <button type="button" class="btn btn-default" ng-click="remove($index)">Remove</button>            
+        </div>
+    </div>
+
+    <script src="js/angular.min.js"></script>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myCtrl", function($scope) {
+            $scope.items=[{title:'Pebbles',quantity:8,price:30},{title:'Abadas',quantity:28,price:10},{title:'NewsTic',quantity:2,price:50},{title:'Habi',quantity:80,price:2}];
+            $scope.remove=function(index){
+                $scope.items.splice(index,1);
+            }
+        });
+    </script>
+</body>
+
+</html>
